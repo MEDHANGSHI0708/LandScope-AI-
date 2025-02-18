@@ -7,5 +7,8 @@ AI-powered system that leverages Google Earth Engine (GEE) and machine learning 
 
 
 
-Uploading Screencast from 2025-02-18 15-46-32.mp4…
+
+
+
+https://github.com/user-attachments/assets/4b1cda34-07f3-4593-8af5-7a66959ad10b
 
