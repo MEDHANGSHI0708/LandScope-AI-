@@ -15,7 +15,4 @@ https://github.com/user-attachments/assets/4b1cda34-07f3-4593-8af5-7a66959ad10b
 
 
 
-file:///home/medhangshi/Pictures/Screenshots/Screenshot%20from%202025-02-18%2016-34-35.png
-
-
 
