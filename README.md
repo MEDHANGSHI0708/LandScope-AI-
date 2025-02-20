@@ -42,17 +42,9 @@ https://github.com/user-attachments/assets/4b1cda34-07f3-4593-8af5-7a66959ad10b
 
 
 
-
-
-
-
-
 # Landsat Image Classification & Clustering
 
-## Overview
-This project applies machine learning techniques to classify satellite imagery data using **Google Earth Engine (GEE)** and a **Random Forest Classifier** with clustering methods. The model processes **NDVI (Normalized Difference Vegetation Index), NDBI (Normalized Difference Built-up Index), and MNDWI (Modified Normalized Difference Water Index)** to segment and classify land cover types.
 
----
 
 ## Mathematical Intuition & Formulas
 
@@ -60,16 +52,22 @@ This project applies machine learning techniques to classify satellite imagery d
 Satellite images are processed to extract three critical indices:
 
 - **NDVI (Vegetation Index)**:
-  \[ NDVI = \frac{(NIR - RED)}{(NIR + RED)} \]
-  Measures vegetation health by comparing Near Infrared (NIR) and Red bands.
+  ![Screenshot from 2025-02-20 21-51-44](https://github.com/user-attachments/assets/d039abbf-335f-483d-a3c6-7765c0670dab)
+
+
+
+
 
 - **NDBI (Built-up Area Index)**:
-  \[ NDBI = \frac{(SWIR - NIR)}{(SWIR + NIR)} \]
-  Helps in identifying built-up areas using Short-Wave Infrared (SWIR) and Near Infrared (NIR) bands.
+  ![Screenshot from 2025-02-20 21-52-53](https://github.com/user-attachments/assets/25899492-8319-41a1-a12d-f3d2366e95f9)
+
+
+
+
 
 - **MNDWI (Water Index)**:
-  \[ MNDWI = \frac{(GREEN - SWIR)}{(GREEN + SWIR)} \]
-  Enhances water body detection by comparing Green and SWIR bands.
+  ![Screenshot from 2025-02-20 21-53-36](https://github.com/user-attachments/assets/57dafd8c-a7ee-40f8-933e-ddefc45b9826)
+
 
 ---
 
@@ -83,15 +81,30 @@ Satellite images are processed to extract three critical indices:
 ### 3. **Unsupervised Learning: K-Means Clustering**
 Before classification, the model clusters data into groups using **K-Means**:
 - Assigns each sample to the nearest cluster centroid using **Euclidean Distance**:
-  \[ d = \sqrt{\sum (x_i - \mu_i)^2} \]
+
+
+![Screenshot from 2025-02-20 21-54-35](https://github.com/user-attachments/assets/211b15d8-ef1b-46be-ab85-9091608ae575)
+
+
+
+  
 - Updates centroids iteratively to minimize within-cluster variance:
-  \[ J = \sum_{i=1}^{k} \sum_{x \in C_i} ||x - \mu_i||^2 \]
 - Number of clusters (**k**) is set to **4**.
+- IDENTIFIED USING THE ELBOW METHOD
+- ![Screenshot from 2025-02-15 22-50-59](https://github.com/user-attachments/assets/48b746bb-76ee-480a-b69a-58b85b08e8c3)
+
 
 ---
 
 ### 4. **Handling Imbalanced Classes: SMOTE**
 - **Synthetic Minority Over-sampling Technique (SMOTE)** generates synthetic data points for underrepresented classes.
+
+
+
+- ![Screenshot from 2025-02-16 00-42-36](https://github.com/user-attachments/assets/75554888-7be2-4569-84ea-c7c6557f8842)
+
+
+
 - Uses **k-Nearest Neighbors (k-NN)** to create artificial samples in the feature space.
 
 ---
@@ -102,9 +115,15 @@ Once clusters are assigned, the model applies a **Random Forest Classifier (RFC)
 - **Feature Selection:** Each tree randomly selects a subset of features.
 - **Splitting Criteria:**
   - **Gini Impurity:**
-    \[ G = 1 - \sum_{i=1}^{c} p_i^2 \]
+
+![Screenshot from 2025-02-20 21-55-48](https://github.com/user-attachments/assets/be44bbcc-854d-4602-92ad-a61313027ef5)
+
+
   - **Entropy (Optional):**
-    \[ H = - \sum_{i=1}^{c} p_i \log_2 (p_i) \]
+  - 
+    ![Screenshot from 2025-02-20 21-58-11](https://github.com/user-attachments/assets/cf418e55-c782-4965-83cc-6831b56c7247)
+
+
 - **Final Prediction:** Majority voting among trees determines the final class.
 
 ---
@@ -119,17 +138,23 @@ Once clusters are assigned, the model applies a **Random Forest Classifier (RFC)
 
 ---
 
-## Workflow Summary
-1. **Data Collection:** Load satellite indices from CSV.
-2. **Preprocessing:** Remove NaN, scale data using RobustScaler.
-3. **Clustering (K-Means):** Assigns initial labels to data.
-4. **SMOTE:** Balances dataset for classification.
-5. **Train-Test Split:** 80% training, 20% testing.
-6. **Random Forest Training:** Optimized using GridSearchCV.
-7. **Evaluation:** Uses classification report & confusion matrix.
-8. **Model Saving:** Saves trained model and scaler using `joblib`.
 
----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
